@@ -1,0 +1,18 @@
+<h2>List of ratings</h2>
+<p> Number of ratings: <%= @ratings.count %> </p
+<p>
+	<ul>
+  <% @ratings.each do |rating| %>
+ <% byebug if rating.beer.nil? %>
+    <li> <%= rating %> <%= link_to rating.user.username, user_path(rating.user)%> </li>
+  <% end %>
+</ul>
+</p>
+
+<h3>
+<%= if current_user.nil? %>
+<%= link_to 'Add new rating', new_rating_path %>
+<% end %>
+</h3>
+
+

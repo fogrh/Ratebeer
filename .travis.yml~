@@ -1,0 +1,16 @@
+language: ruby
+rvm:
+- 2.0.0
+script:
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
+deploy:
+  provider: heroku
+  api_key:
+    secure: dTW93KOQOqJtmYWeueeGM40oKJshpdF+dOJMdR4ZmvJaNljnI+45ws8rkafBZXH9HlqIFvSn8jUvoyzy2JhNyXLaLxe3/FGunh+Vqjb55E1247Mq4hPp69wdKzYITeTYtIBNqXMIB3T4lMGVoxlgcOlB2xdYZDX7/ZHCGE1J8gA=
+  app: fogrh-wepa
+  run: "rake db:migrate"
+  on:
+    repo: fogrh/Wepa-RubyOnRails2015/tree/ratebeer
