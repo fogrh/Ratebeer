@@ -9,7 +9,7 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: dTW93KOQOqJtmYWeueeGM40oKJshpdF+dOJMdR4ZmvJaNljnI+45ws8rkafBZXH9HlqIFvSn8jUvoyzy2JhNyXLaLxe3/FGunh+Vqjb55E1247Mq4hPp69wdKzYITeTYtIBNqXMIB3T4lMGVoxlgcOlB2xdYZDX7/ZHCGE1J8gA=
+    secure: SqxTsYLEQCjGpFHpZEhWrAdquz8DlG6blWDe2kVKfrnK/YvtIDKyWHwJsiadlLXKCaoBuUA8/Wy5JCuN4JDzDRIcCnVevM9Jc+brp3lCBbWPZGWtBUL6qCNVekEYznsY30e4uS47bzx3X1Aw0hIE4FtJoqcQ9oYxUlOCbNPACmk=
   app: fogrh-wepa
   run: "rake db:migrate"
   on:
