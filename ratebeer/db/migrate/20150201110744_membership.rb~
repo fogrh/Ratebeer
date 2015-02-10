@@ -1,0 +1,5 @@
+class Membership < ActiveRecord::Migration
+  def change
+	add_column :beerclub, :users, :integer
+  end
+end
