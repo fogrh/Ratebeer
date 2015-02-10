@@ -13,4 +13,4 @@ deploy:
   app: fogrh-wepa
   run: "rake db:migrate"
   on:
-    repo: fogrh/Wepa-RubyOnRails2015/tree/master/ratebeer
+    repo: fogrh/Ratebeer
