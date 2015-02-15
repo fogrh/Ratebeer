@@ -54,11 +54,11 @@ describe "BeermappingApi" do
    place = places.first
     expect(place).to eq(nil)
   end
-=begin   
-it "When HTTP GET returns many entries, they parsed and returned" do
-	adresses =create_addresses #own_test_helper luokasta löytyvä metodi
 
-    stub_request(:get, /.*espoo/).to_return(body: adresses.to_s, headers: { 'Content-Type' => "text/xml" })
+it "When HTTP GET returns many entries, they parsed and returned" do
+	canned_answer = create_addresses #OwnTestHelperistä löytyvä metodi
+
+    stub_request(:get, /.*espoo/).to_return(body: canned_answer, headers: { 'Content-Type' => "text/xml" })
 
    places = BeermappingApi.places_in("espoo")
 
@@ -66,10 +66,6 @@ it "When HTTP GET returns many entries, they parsed and returned" do
    place = places.first
     expect(place.name).to eq("Gallows Bird")
 	expect(place.street).to eq("Merituulentie 30")
-   place2 = places.find_by id(place.id+1)
-	expect(place2.name).to eq("O'Connell's Irish Bar")
-	expect(place2.street).to eq("Rautatienkatu 24")
   end
-=end
  end
 end

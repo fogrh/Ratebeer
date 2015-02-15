@@ -21,15 +21,18 @@ class BeermappingApi
       set << Place.new(place)
     end
   end
-=begin
+
   def self.fetch_place(id)
 	url = "http://beermapping.com/webservice/locquery/#{key}/"
 	response = HTTParty.get "#{url}#{ERB::Util.url_encode(id)}"
 	places = response.parsed_response["bmp_locations"]["location"]
-	return nil if places['id'].nil?
-	Place.new
-=end
-  def self.key
+  end
+
+	
+
+private  
+
+def self.key
     raise "APIKEY env variable not defined" if ENV['APIKEY'].nil?
     ENV['APIKEY']
   end

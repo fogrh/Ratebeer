@@ -8,12 +8,9 @@ module OwnTestHelper
   end
 
   	def create_addresses
-	canned_answer = <<-END_OF_STRING
-<?xml version='1.0' encoding='utf-8' ?><bmp_locations><location><id>12411</id><name>Gallows Bird</name><status>Brewery</status><reviewlink>http://beermapping.com/maps/reviews/reviews.php?locid=12411</reviewlink><proxylink>http://beermapping.com/maps/proxymaps.php?locid=12411&amp;d=5</proxylink><blogmap>http://beermapping.com/maps/blogproxy.php?locid=12411&amp;d=1&amp;type=norm</blogmap><street>Merituulentie 30</street><city>Espoo</city><state></state><zip>02200</zip><country>Finland</country><phone>+358 9 412 3253</phone><overall>91.66665</overall><imagecount>0</imagecount></location></bmp_locations>
+	<<-END_OF_STRING
+<?xml version='1.0' encoding='utf-8' ?><bmp_locations><location><id>12411</id><name>Gallows Bird</name><street>Merituulentie 30</street><city>Espoo</city></location><location><id>13307</id><name>O'Connell's Irish Bar</name><street>Rautatienkatu 24</street><city>Tampere</city></location></bmp_locations>
     END_OF_STRING
-	canned_answer2 = create_cache_address
-	adresses = [canned_answer, canned_answer2]
-
 	end
 
 	def create_cache_address

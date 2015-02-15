@@ -7,11 +7,14 @@ class PlacesController < ApplicationController
     if @places.nil? or @places.empty?
       redirect_to places_path, notice: "No locations in #{params[:city]}"
     else
+ 	session[:city] 
       render :index
     end
   end
 
   def show
+	@place = BeermappingApi.fetch_place(params[:id])
+	@key = BeermappingApi.gkey
   end
 
 end
