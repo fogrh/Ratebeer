@@ -5,7 +5,7 @@ RSpec.describe Beer, type: :model do
 	
    describe "with proper name and style" do
 	it "is valid and saved" do
-	  beer = Beer.create name:"Testipanimo", style:"Testityyli"
+	  beer = FactoryGirl.create(:beer) 
 	  expect(beer).to be_valid
           expect(Beer.count).to eq(1)
 	end      	  	
@@ -13,7 +13,8 @@ RSpec.describe Beer, type: :model do
 
    describe "is not" do
 	it "valid without a name" do
-	beer = Beer.create name:"", style:"Testityyli"
+	style = FactoryGirl.create(:style)
+	beer = Beer.create name:"", style_id: style.id
 	expect(beer).not_to be_valid
 	end
 	it "or valid without a style" do

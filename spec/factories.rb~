@@ -13,9 +13,6 @@ FactoryGirl.define do
 	score 20
   end
 
-  factory :ratings, class: Rating do
-  score 10
-  end
 
   factory :brewery do
     name "anonymous"
