@@ -1,0 +1,18 @@
+<h2>List of beerstyles</h2>
+<p> Number of styles: <%= @styles.count %> </p
+<p>
+	<ul>
+  <% @styles.each do |style| %>
+    <li> <%= link_to style.beerstyle, style_path(style)%> </li>
+  <% end %>
+</ul>
+</p>
+
+
+<h3>
+<%= if not current_user.nil%>
+<%= link_to 'Add new rating', new_rating_path %>
+<%end%>
+</h3>
+
+

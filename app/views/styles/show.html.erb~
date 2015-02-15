@@ -1,0 +1,21 @@
+<h2>
+  <%= @style.beerstyle %>
+</h2>
+
+<p>
+<%= @style.description %>
+</p>
+
+<h3>List of beers:</h3>
+<p>
+<ul>
+<%= @style.beers.each do |b| %>
+<li><%= link_to b, beer_path(b) %></li>
+<% end %>
+</ul>
+</p>
+
+<% if current_user.nil? %>
+<%= link_to 'Edit', edit_style_path(@style) %>
+<%= link_to 'Delete style', style_path(@style), method: :delete, data: {confirm: 'Are ya shuuure?'} %>
+<%end%>

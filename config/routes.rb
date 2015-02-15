@@ -1,6 +1,6 @@
 Ratebeer::Application.routes.draw do
 
-  resources :memberships
+  
 
   resources :beer_clubs
 
@@ -8,8 +8,11 @@ Ratebeer::Application.routes.draw do
   resources :beers
   resources :breweries
   resources :ratings, only: [:index, :new, :create, :destroy]
+  resources :styles
   resource :session, only: [:new, :create, :delete]
+  resources :memberships, only: [:new, :create, :destroy]
   resources :users
+  resources :places, only:[:index, :show]
   get 'signup', to: 'users#new'
   get 'signin', to: 'sessions#new'
   get 'places', to: 'places#index'

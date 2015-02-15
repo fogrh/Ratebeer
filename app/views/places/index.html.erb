@@ -10,14 +10,16 @@
 <% if @places %>
   <table>
     <thead>
+	<td>Link</td>
       <% Place.rendered_fields.each do |f| %>
         <td><%=f %></td>
       <% end %>
     </thead>
     <% @places.each do |place| %>
       <tr>
+	<td><%=link_to place.name, place_path(place.id) %>
         <% Place.rendered_fields.each do |f| %>
-          <td><%= place.send(f) %></td>
+        <td><%= place.send(f) %></td>
         <% end %>
       </tr>
     <% end %>

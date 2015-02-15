@@ -1,0 +1,35 @@
+<%= form_for(@style) do |f| %>
+
+ <% if not @style.new_record? %>
+<h2>Edit style</h2>
+<% end %>
+
+  <% if @style.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@style.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @style.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <% if @style.new_record? %>
+    <div class="field">
+      <%= f.label :beerstyle %><br />
+      <%= f.text_field :beerstyle %>
+    </div>
+  <% end %>
+    <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @style %> |
+<%= link_to 'Back', :back %>

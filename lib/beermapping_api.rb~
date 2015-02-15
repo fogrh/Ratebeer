@@ -26,4 +26,10 @@ class BeermappingApi
     raise "APIKEY env variable not defined" if ENV['APIKEY'].nil?
     ENV['APIKEY']
   end
+
+  def self.gkey #Google api key
+  "AIzaSyA8QlwYJpCMFJTFovoupnJ67qCF_uC3X_s"
+  end
 end
+
+
