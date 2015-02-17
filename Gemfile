@@ -2,6 +2,15 @@ source 'https://rubygems.org'
 
 gem 'bcrypt', '~> 3.1.7'
 
+ruby '2.2.0' 
+
+gem 'rails', '~>4.0.2'
+
+gem 'bootstrap-sass'
+group :development do
+  gem 'rails_layout'
+end
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
@@ -57,9 +66,7 @@ group :development, :test do
   gem "better_errors"
 end
 
-ruby '2.2.0' 
 
-gem 'rails', '~>4.0.2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

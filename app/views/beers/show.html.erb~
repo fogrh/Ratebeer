@@ -22,8 +22,9 @@
     score: <%= f.number_field :score %>
     <%= f.submit %>
   <% end %>
-
-  <%= link_to 'Edit', edit_beer_path(@beer) %>
-
 <% end %>
+<p>
+  <%= link_to 'Edit', edit_beer_path(@beer.id) , class:"btn btn-primary" %>
+  <%= link_to 'Destroy', @beer.id, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-danger" %>
+</p>
 

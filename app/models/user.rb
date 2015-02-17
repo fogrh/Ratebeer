@@ -9,21 +9,52 @@ class User < ActiveRecord::Base
 	validates :username, uniqueness: true, length: { minimum: 3, maximum: 15 }
 	validates :password, format: { with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{4,}\z/, message: "Password must contain atleast one uppercase letter, a number and be longer than 3 characters." }
 
-	def favorite_beer
-	return nil if ratings.empty?
-   	ratings.order(score: :desc).limit(1).first.beer	
+	def self.most_rated(n)
+	sorted = User.all.sort_by{ |b| -(b.ratings.count ||0) }
+	sorted.take(n)
+	end
+	def self.favorite_styles(n)
+	sorted = User.all.
 	end
 
-	def favorite_style
-	return nil if ratings.empty?
-	styles = self.beers.select(:style)
-	#styles.max_by{|k,v| v}[0]
-	end
-
-	def favorite_brewery
-	return nil if ratings.empty?
-	brews = self.beers.group(:brewery).count
-	rating = brews
-	brews.max_by{|k,v| v}[0].name
-	end
+def favorite_beer
+return nil if ratings.empty?
+ratings.order(score: :desc).limit(1).first.beer
+end
+def favorite_brewery
+return nil if ratings.empty?
+brewery_ratings = rated_breweries.inject([]) do |ratings, brewery|
+ratings << {
+name: brewery,
+rating: rating_of_brewery(brewery) }
+end
+brewery_ratings.sort_by { |brewery| brewery[:rating] }.reverse.first[:name]
+end
+def favorite_style
+return nil if ratings.empty?
+style_ratings = rated_styles.inject([]) do |ratings, style|
+ratings << {
+name: style,
+rating: rating_of_style(style) }
+end
+style_ratings.sort_by { |style| style[:rating] }.reverse.first[:name]
+end
+def rated_breweries
+ratings.map{ |r| r.beer.brewery }.uniq
+end
+def rated_styles
+ratings.map{ |r| r.beer.style }.uniq
+end
+def rating_of_brewery(brewery)
+ratings_of_brewery = ratings.select do |r|
+r.beer.brewery == brewery
+end
+ratings_of_brewery.map(&:score).sum / ratings_of_brewery.count
+end
+def rating_of_style(style)
+ratings_of_style = ratings.select do |r|
+r.beer.style == style
+end
+ratings_of_style.map(&:score).sum / ratings_of_style.count
+end
 end

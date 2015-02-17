@@ -17,16 +17,16 @@ Part of <%=pluralize(@user.memberships.count, 'beer club') %>:
  <% if @user.ratings.empty? %>
  No ratings yet.
  <% else %>
- Has made <%=pluralize(@user.ratings.count, 'rating') %>.
- Average rating: <%= @user.average_rating %>.
 <p>
  Favorite beer style: <%= @user.favorite_style %>.
  Favorite brewery: <%= @user.favorite_brewery %>
 </p>
+ Has made <%=pluralize(@user.ratings.count, 'rating') %>.
+ Average rating: <%= @user.average_rating %>.
 <% end %>
 </p>
 
-<table>
+<table class="table table-hover">
  <thead>
 	<tr>
 	<th>Beer</td>

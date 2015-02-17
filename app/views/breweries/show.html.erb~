@@ -8,17 +8,15 @@
 <p>
 Has <%= pluralize(@brewery.beers.count, 'beer') %> with <%= pluralize(@brewery.ratings.count, 'rating') %>.
  Average rating of this brewery's products: <%= @brewery.average_rating %>
-</p>
-
-
-	<p>
- 		<% @brewery.beers.each do |beer| %>
-   		<%= link_to beer.name, beer %>
- 		<% end %>
+	<ul>
 	
-	</p>
-</p>
+ 		<% @brewery.beers.each do |beer| %>
+   		<li><%= link_to beer.name, beer %></li>
+ 		<% end %>
+	</ul>
 <p>
-	<%= link_to 'Edit', edit_brewery_path(@brewery) %> |
-	<%= link_to 'Back', breweries_path %>
+<% if current_user %>
+	<%= link_to 'Edit', edit_brewery_path(@brewery.id), class:'btn btn-primary' %></td>
+        <%= link_to 'Destroy', @brewery, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %>
+<%end%>
 </p>

@@ -1,18 +1,23 @@
 class Brewery < ActiveRecord::Base
+include RatingAverage
+
 	has_many :beers, dependent: :destroy
 	has_many :ratings, through: :beers
 
-	include RatingAverage
-
+ 	validates :year, numericality: { less_than_or_equal_to: ->(_) { Time.now.year} }
 	validates :name, presence: true
 	validates :year, numericality: { greater_than_or_equal_to: 1042, only_integer: true }
-	validate :yearcheck
 
+  	scope :active, -> { where active:true }
+  	scope :retired, -> { where active:[nil,false] }
 
-	def yearcheck
-	  if year.present? and year > Time.new.year
-	    errors.add(:year, " can't be in the future")
-    	  end
-  	end
+	def to_s
+	"#{self.name}"
+	end
+
+	def top
+	top_ratings(3)
+	end
+
 
 end

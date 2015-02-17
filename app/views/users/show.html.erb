@@ -26,7 +26,7 @@ Part of <%=pluralize(@user.memberships.count, 'beer club') %>:
 <% end %>
 </p>
 
-<table>
+<table class="table table-hover">
  <thead>
 	<tr>
 	<th>Beer</td>
@@ -38,7 +38,7 @@ Part of <%=pluralize(@user.memberships.count, 'beer club') %>:
     <% @user.ratings.each do |r| %>
       <tr>
 	<td><%= r.beer.name %></td> 
-    	<td> | <%= r.score %></td>
+    	<td><%= r.score %></td>
 	<% if @user == current_user %>
 	<td><%= link_to 'Delete', r, method: :delete, data: {confirm: 'Are ya shuuure?'} %></td>
 	<% end %>

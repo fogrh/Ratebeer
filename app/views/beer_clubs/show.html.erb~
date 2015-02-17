@@ -27,14 +27,11 @@
     <%= f.hidden_field :beer_club_id %>
     <%= f.submit value:"join the club" %>
  <% end %>
-<% end %>
-<%if current_user.clubs.find_by id: @beer_club.id %>
-   <%= form_for(@membership, method: "delete") do |f| %>
-      <%= f.hidden_field :beer_club_id %>
-      <%= f.submit value: "end the membership" %>
-   <% end %>
+<%else%>
+	<%= link_to 'end the membership', @memberhip, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %>
 </p>
-<%= link_to 'Edit', edit_beer_club_path(@beer_club) %>
+<p>
+<%= link_to 'Edit', edit_beer_club_path(@beer_club), class:'btn btn-primary' %>
 <%end%>
 <%end%>
 
