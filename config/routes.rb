@@ -1,9 +1,6 @@
 Ratebeer::Application.routes.draw do
-
   
-
   resources :beer_clubs
-
   root 'breweries#index'
   resources :beers
   resources :breweries
@@ -18,6 +15,13 @@ Ratebeer::Application.routes.draw do
   get 'places', to: 'places#index'
   post 'places', to:'places#search'
   delete 'signout', to: 'sessions#destroy'
+
+  resources :breweries do
+    post 'toggle_activity', on: :member
+  end
+ resources :users do
+    put 'freeze_account', on: :member
+  end
   
 end
 

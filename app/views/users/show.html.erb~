@@ -1,7 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <h2>
   <%= @user.username %>
+  <% if @user.iced %><p class="bg-info">account frozen</p><%end%>
 </h2>
 
 <p>
@@ -38,7 +37,7 @@ Part of <%=pluralize(@user.memberships.count, 'beer club') %>:
     <% @user.ratings.each do |r| %>
       <tr>
 	<td><%= r.beer.name %></td> 
-    	<td> | <%= r.score %></td>
+    	<td><%= r.score %></td>
 	<% if @user == current_user %>
 	<td><%= link_to 'Delete', r, method: :delete, data: {confirm: 'Are ya shuuure?'} %></td>
 	<% end %>
@@ -55,3 +54,10 @@ Part of <%=pluralize(@user.memberships.count, 'beer club') %>:
 	<% end %>
 <%= link_to 'Back', :back %>
 </p>
+<p> 
+<% if current_user and current_user.admin %>
+<%= link_to "Freeze account", freeze_account_user_path(@user.id), method: :put, class: "btn btn-primary" %>
+<%end%>
+</p>
+
+

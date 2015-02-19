@@ -1,7 +1,7 @@
 module RatingAverage
 
 	def average_rating
-	ratings.average(:score).to_f
+	score = ratings.average(:score).to_f
 	end
 
 

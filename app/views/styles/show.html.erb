@@ -17,7 +17,6 @@
 
 <p>
 <% if current_user %>
-<%= link_to 'Edit', edit_style_path(@style), class:'btn btn-primary' %>
-<%= link_to 'Delete style', style_path(@style), method: :delete, data: {confirm: 'Are ya shuuure?'}, class:'btn btn-danger' %>
+<%= edit_and_destroy_buttons(@style) %>
 <%end%>
 </p>

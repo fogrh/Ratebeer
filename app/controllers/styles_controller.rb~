@@ -27,13 +27,14 @@ before_action :set_style, only: [:show, :edit, :update]
   end
 
    def destroy
+    if current_user.admin
     rating = Style.find(params[:id])
     rating.destroy if current_user
     redirect_to styles_path
+    end
   end
 
   def update
-	@style = Style.find(params[:id])
     respond_to do |format|
       if style_params[:beerstyle].nil? and @style.update(style_params)
         format.html { redirect_to @style, notice: 'User was successfully updated.' }

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :freeze_account]
 
   # GET /users
   # GET /users.json
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-      if user_params[:username].nil? and @user == current_user and @user.update(user_params)
+      if user_params[:username].nil? and @user == current_user or current_user.admin and @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
@@ -63,6 +63,15 @@ class UsersController < ApplicationController
 	end
     end
   end
+  def freeze_account
+	if current_user.admin
+	user = User.find(params[:id])
+	user.update_attribute :iced, (not user.iced)
+	user.save
+	new_status = user.iced? ? "frozen" : "melted"	
+	redirect_to :back, notice:"user is now #{new_status}"
+	end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -72,6 +81,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-     params.require(:user).permit(:username, :password, :password_confirmation)
+     params.require(:user).permit(:username, :password, :password_confirmation, :iced)
   end
 end

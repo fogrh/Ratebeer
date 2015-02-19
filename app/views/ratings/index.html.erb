@@ -1,7 +1,8 @@
 <h2>Ratings</h2>
 <p> Number of ratings: <%= @ratings.count %>.     
+<%if current_user %>
 <%= link_to 'Add new rating', new_rating_path, class:'btn btn-primary' %></t></p>
-
+<%end%>
 <p>
     <div class="row">
       <div class="col-xs-8 col-sm-6">
@@ -17,7 +18,7 @@
 			<%@beers.first.top_rated(3).each do |b| %>
 			<tr>
 			<td><%=link_to b.name, b %></td> 
-			<td><%= b.average_rating %></td> 			
+			<td><%= round( b.average_rating) %></td> 			
 			</tr>
 			<%end%>
 			</tbody>
@@ -36,7 +37,7 @@
 			<%@brewery.first.top_rated(3).each do |b| %>
 			<tr>
 			<td><%=link_to  b.name, b %></td> 
-			<td><%= b.average_rating %></td> 			
+			<td><%=round( b.average_rating) %></td> 			
 			</tr>
 			<%end%>
 			</tbody>

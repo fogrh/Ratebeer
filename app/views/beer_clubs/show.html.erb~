@@ -16,10 +16,14 @@
 
 <h3>Members</h3>
 <p>
-<% @beer_club.members.each do |r| %> 
-<td><%= link_to  r.username, user_path(r) %></td>
-<% end %>
+  <ul>
+	<% @beer_club.members.each do |r| %> 
+	<li><%= link_to  r.username, user_path(r) %></li>
+	<% end %>
+  </ul>
 </p>
+
+
 <% if current_user %>
 <p>
 <%if not current_user.clubs.find_by id: @beer_club.id %>

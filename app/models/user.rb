@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 	sorted.take(n)
 	end
 	def self.favorite_styles(n)
-	sorted = User.all.
+	sorted = User.all
 	end
 
 def favorite_beer

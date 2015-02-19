@@ -9,7 +9,7 @@
 <h3>List of beers:</h3>
 <p>
 <ul>
-<%= @style.beers.each do |b|  %>
+<% @style.beers.each do |b|  %>
 <li><%= link_to b.name, beer_path(b) %> by <%= link_to b.brewery.name, brewery_path(b.brewery) %></li>
 <% end %>
 </ul>
@@ -17,7 +17,5 @@
 
 <p>
 <% if current_user %>
-<%= link_to 'Edit', edit_style_path(@style), class:'btn btn-primary' %>
-<%= link_to 'Delete style', style_path(@style), method: :delete, data: {confirm: 'Are ya shuuure?'}, class:'btn btn-danger' %>
-<%end%>
+<%= edit_and_destroy_buttons(@style) %>
 </p>

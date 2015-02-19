@@ -3,7 +3,7 @@
 
 <table class="table table-hover">
 	<thead>
-	<th>Style</th>
+	<tr><th>Style</th></tr>
 	</thead>
 	
 	 <% @styles.each do |style| %>  
@@ -15,7 +15,9 @@
 </table>
 
 <p>
+<%if current_user %>
 <%= link_to 'Add new style', new_style_path, class:"btn btn-primary" %>
+<%end%
 </p>
 
 

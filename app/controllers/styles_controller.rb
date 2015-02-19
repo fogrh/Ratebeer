@@ -27,9 +27,11 @@ before_action :set_style, only: [:show, :edit, :update]
   end
 
    def destroy
+    if current_user.admin
     rating = Style.find(params[:id])
-    rating.destroy if current_user
+    rating.destroy
     redirect_to styles_path
+    end
   end
 
   def update
