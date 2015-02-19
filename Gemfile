@@ -10,9 +10,6 @@ gem 'bootstrap-sass'
 group :development do
   gem 'rails_layout'
 end
-group :production do
-  gem 'rails_layout'
-end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
