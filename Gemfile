@@ -7,9 +7,7 @@ ruby '2.2.0'
 gem 'rails', '~>4.0.2'
 
 gem 'bootstrap-sass'
-group :development do
   gem 'rails_layout'
-end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
