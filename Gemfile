@@ -6,22 +6,27 @@ ruby '2.2.0'
 
 gem 'rails', '~>4.0.2'
 
+gem 'jquery-turbolinks'
+
 gem 'bootstrap-sass'
 group :development do
+	gem 'rack-mini-profiler'
   gem 'rails_layout'
 end
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
 group :test do
+  gem 'selenium-webdriver'
   gem 'factory_girl_rails'
+  gem 'database_cleaner'
   gem 'capybara'
   gem 'launchy'
   gem 'webmock'
 end
 gem 'simplecov', require: false
 gem 'httparty'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

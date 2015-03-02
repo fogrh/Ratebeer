@@ -15,8 +15,9 @@ include RatingAverage
 	"#{self.name}"
 	end
 
-	def self.top
-	top_ratings(3)
+	def self.top(n)
+	sorted_by_rating_in_desc_order = Brewery.all.sort_by{ |b| -(b.average_rating||0) }
+	sorted_by_rating_in_desc_order[0..(n-1)]
 	end
 
 

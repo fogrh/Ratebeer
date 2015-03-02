@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.includes(:beers, :ratings).all
   end
 
   # GET /users/1
@@ -67,6 +67,7 @@ class UsersController < ApplicationController
 	if current_user.admin
 	user = User.find(params[:id])
 	user.update_attribute :iced, (not user.iced)
+	user.save
 	new_status = user.iced? ? "frozen" : "melted"	
 	redirect_to :back, notice:"user is now #{new_status}"
 	end

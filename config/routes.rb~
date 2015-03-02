@@ -13,6 +13,7 @@ Ratebeer::Application.routes.draw do
   get 'signup', to: 'users#new'
   get 'signin', to: 'sessions#new'
   get 'places', to: 'places#index'
+  get 'beerlist', to:'beers#list'
   post 'places', to:'places#search'
   delete 'signout', to: 'sessions#destroy'
 
@@ -20,7 +21,7 @@ Ratebeer::Application.routes.draw do
     post 'toggle_activity', on: :member
   end
  resources :users do
-    post 'freeze_account', on: :member
+    put 'freeze_account', on: :member
   end
   
 end

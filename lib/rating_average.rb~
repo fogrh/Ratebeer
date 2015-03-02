@@ -1,8 +1,7 @@
 module RatingAverage
 
 	def average_rating
-	score = ratings.average(:score).to_f
-	round(score)
+	 ratings.map(&:score).sum.to_f/ratings.count
 	end
 
 
@@ -14,5 +13,9 @@ module RatingAverage
 	classname= self.class
  	all = classname.all.sort_by{ |b| -(b.average_rating||0) }
 	all.take(n)
+	end
+	 def self.top(n)
+	sorted_by_rating_in_desc_order = self.Class.all.sort_by{ |b| -(b.average_rating||0) }
+	sorted_by_rating_in_desc_order[0..(n-1)]
 	end
 end

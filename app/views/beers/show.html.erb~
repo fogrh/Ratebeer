@@ -16,13 +16,14 @@
 <% if current_user %>
 
   <h4>give a rating:</h4>
-
+<p>
   <%= form_for(@rating) do |f| %>
     <%= f.hidden_field :beer_id %>
     score: <%= f.number_field :score %>
     <%= f.submit %>
   <% end %>
 <% end %>
+</p>
 <p>
  <%= edit_and_destroy_buttons(@beer) %>
 </p>

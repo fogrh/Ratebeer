@@ -1,6 +1,6 @@
-<p id="notice"><%= notice %></p>
+<h2> <%= @brewery.name %>
 
-<h2> <%= @brewery.name %>  
+<% cache @brewery do %>  
 <% if not @brewery.active  %>
 <span class="label label-info">retired</span>
 <% end %> </h2>
@@ -19,6 +19,8 @@ Has <%= pluralize(@brewery.beers.count, 'beer') %> with <%= pluralize(@brewery.r
 	</ul>
 
 <p>
+<% end %>
+
 <% if current_user %>
 <%= link_to "change activity", toggle_activity_brewery_path(@brewery.id), method: :post, class: "btn btn-primary" %>
 <%end%>
